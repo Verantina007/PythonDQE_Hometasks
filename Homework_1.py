@@ -34,12 +34,14 @@ for value in res_list: # circle for adding numbers in even_list and odd_list
     else:
         odd_list.append(value) # if remainder of the division by 2 is not 0, then the number is odd and add it in odd_list
 
-try: # exception of devision by zero
-    # even_list=[] # check empty list
-    even_avg = sum (even_list)/len (even_list) # sun of values in the even_list devided by the number of values in the even_list
-    print('The average result for even list is ', '%.3f' % even_avg)  # print the average value with 3 numbers after comma
+# even_list=[] # check empty list
+try:
+    even_avg = sum (even_list)/len (even_list)
 except:
-    print('ZeroDivisionError: division by zero')
+    ZeroDivisionError:print("You tried to divide by zero")
+else:
+    even_avg = sum(even_list) / len(even_list)
+    print('The average result for even list is ', '%.3f' % even_avg)
 
 # odd_list=[] # check empty list
 if odd_list==[]: # checking devision by zero with if clause
