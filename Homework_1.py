@@ -24,7 +24,7 @@ while sort_list:
 print (res_list)
 print (sorted (res_list)) # for checking the result
 
-# 3. calculate average for even and odd numbers
+# 3-4. calculate average for even and odd numbers and print the result in console
 even_list = [] # empty list for adding even numbers
 odd_list = [] # empty list for adding odd numbers
 
@@ -34,10 +34,18 @@ for value in res_list: # circle for adding numbers in even_list and odd_list
     else:
         odd_list.append(value) # if remainder of the division by 2 is not 0, then the number is odd and add it in odd_list
 
-even_avg = sum (even_list)/len (even_list) # sun of values in the even_list devided by the number of values in the even_list
-odd_avg = sum (odd_list)/len (odd_list) # sun of values in the odd_list devided by the number of values in the odd_list
+# even_list=[] # check empty list
+try:
+    even_avg = sum (even_list)/len (even_list)
+except ZeroDivisionError: 
+    print("You tried to divide by zero")
+else:
+    print('The average result for even list is ', '%.3f' % even_avg)
 
-# 4. print both average result in console
-print ('The average result for even list is ', '%.3f' % even_avg) # print the average value with 3 numbers after comma
-print ('The average result for odd list is ', '%.3f' % odd_avg) # print the average value with 3 numbers after comma
+# odd_list=[] # check empty list
+if odd_list==[]: # checking devision by zero with if clause
+    print('The list with odd numbers is empty')
+else:
+    odd_avg = sum (odd_list)/len (odd_list) # sun of values in the odd_list devided by the number of values in the odd_list
+    print('The average result for odd list is ', '%.3f' % odd_avg)  # print the average value with 3 numbers after comma
 
