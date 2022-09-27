@@ -39,7 +39,7 @@ try: # exception of devision by zero
     even_avg = sum (even_list)/len (even_list) # sun of values in the even_list devided by the number of values in the even_list
     print('The average result for even list is ', '%.3f' % even_avg)  # print the average value with 3 numbers after comma
 except:
-    print('The list with even numbers is empty')
+    print('ZeroDivisionError: division by zero')
 
 # odd_list=[] # check empty list
 if odd_list==[]: # checking devision by zero with if clause
