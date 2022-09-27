@@ -37,8 +37,8 @@ for value in res_list: # circle for adding numbers in even_list and odd_list
 # even_list=[] # check empty list
 try:
     even_avg = sum (even_list)/len (even_list)
-except:
-    ZeroDivisionError:print("You tried to divide by zero")
+except ZeroDivisionError: 
+    print("You tried to divide by zero")
 else:
     even_avg = sum(even_list) / len(even_list)
     print('The average result for even list is ', '%.3f' % even_avg)
