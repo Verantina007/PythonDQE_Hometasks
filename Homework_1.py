@@ -40,7 +40,6 @@ try:
 except ZeroDivisionError: 
     print("You tried to divide by zero")
 else:
-    even_avg = sum(even_list) / len(even_list)
     print('The average result for even list is ', '%.3f' % even_avg)
 
 # odd_list=[] # check empty list
