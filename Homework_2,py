@@ -8,17 +8,10 @@
 import random #import library for useing random function
 import string #import library for working with strings
 
-n = random.randint (2, 10) # length of list with dictionaries
-
-res_list=[] # empty list for adding disctionaries
-
-for i in range(n): # circle for the number of elements in list
-    m=random.randint (1, 26) # generate the number of key-value pairs in each dictionary in res_list
-    temp_dict={} # temporary dictionary for adding each dictionary that will be an element of res_list
-    for j in range (m): # circle for the number of elements for each dictionary
-        temp_dict[random.choice(string.ascii_lowercase)] = random.randint (0, 100) # generate key-value pair for the dictionary
-        #can be the same random values for keys, so we can have less key-value pairs then we have in m
-    res_list.append(temp_dict) # append generated dictionary in the list
+# generate a list of dictionaries
+# n - number of dictionaries (list elements)
+# m - number of elements in each dictionary
+res_list = [({random.choice(string.ascii_lowercase): random.randint(0, 100) for m in range(random.randint (1, 26))}) for n in range(random.randint(2, 10))]
 
 print(res_list)
 
@@ -33,12 +26,17 @@ final_dict = {} # final dictionary for adding the result
 
 for char in string.ascii_lowercase: # go through all letters in the alphabet
     temp_values={} # temporary dictionary for each letter with the number of dictionary and value for this key
-    for i in range(n): # circle through all dictionaries in the list
-        if res_list[i].get(char) is not None: # exclude None values - letters that do not exist in dictionary
-            temp_values[char+'_'+str(i+1)]=res_list[i].get(char) # add number of dictionary for the letter and value for this key
-    for key, value in temp_values.items(): # circle through temporary dictionary for each letter
-        if value==max(temp_values.values()): # choose only key-value pair with max value for each letter
-            final_dict[key]=value # add the key-value pair in final_dict
-            break# skip duplicated values, take only the first one
+    for i in enumerate(res_list): # circle through all dictionaries in the list
+        if i[1].get(char):
+            temp_values[char + '_' + str(i[0] + 1)] = i[1].get(char) # add number of dictionary for the letter and value for this key
+    for key, value in temp_values.items():  # circle through temporary dictionary for each letter
+        if len(temp_values)==0: # if letter doesn't exist in any dictionary
+            break
+        if len(temp_values)==1: # if letter exists only in one dictionary
+            final_dict[str(key)[0]] = value # add t the key-value pair final_dict (key added without number of dictionary)
+        if len(temp_values)>1:
+            if value==max(temp_values.values()):
+                final_dict[key] = max(temp_values.values()) # add the key-value pair in final_dict (key added with the number of dictionary)
+                break
 
 print (final_dict ) # print the result
