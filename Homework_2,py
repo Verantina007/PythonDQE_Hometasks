@@ -26,15 +26,15 @@ final_dict = {} # final dictionary for adding the result
 
 for char in string.ascii_lowercase: # go through all letters in the alphabet
     temp_values={} # temporary dictionary for each letter with the number of dictionary and value for this key
-    for i in enumerate(res_list): # circle through all dictionaries in the list
-        if i[1].get(char):
-            temp_values[char + '_' + str(i[0] + 1)] = i[1].get(char) # add number of dictionary for the letter and value for this key
+    for i, next_dict in enumerate(res_list): # circle through all dictionaries in the list
+        if next_dict.get(char):
+            temp_values[char + '_' + str(i + 1)] = next_dict.get(char) # add number of dictionary for the letter and value for this key
     for key, value in temp_values.items():  # circle through temporary dictionary for each letter
         if len(temp_values)==0: # if letter doesn't exist in any dictionary
             break
-        if len(temp_values)==1: # if letter exists only in one dictionary
+        elif len(temp_values)==1: # if letter exists only in one dictionary
             final_dict[str(key)[0]] = value # add t the key-value pair final_dict (key added without number of dictionary)
-        if len(temp_values)>1:
+        else:
             if value==max(temp_values.values()):
                 final_dict[key] = max(temp_values.values()) # add the key-value pair in final_dict (key added with the number of dictionary)
                 break
