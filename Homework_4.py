@@ -40,31 +40,32 @@ str='''homEwork:
 	last iz TO calculate nuMber OF Whitespace characteRS in this Text. caREFULL, not only Spaces, but ALL whitespaces. I got 87.
 '''
 
-def func_normalize(input_str, normilized_str):
+def func_normalize(input_str, normilized_str): # function for normalization of the string
     for sentence in re.sub(r'\t', '', re.sub(r'\n', '', input_str)).lower().split('.'):
         if re.search(r'\w', sentence):
-            sentence = sentence.strip().capitalize() + sentence.strip()[1:] + '.\n'
-        normilized_str += sentence
+            sentence = sentence.strip().capitalize() + '.\n'
+            normilized_str += sentence
     return (normilized_str)
 
-print (f'Normalized string is:\n {func_normalize(input_str=str, normilized_str="")} \n')
+print (f'Normalized string is:\n{func_normalize(input_str=str, normilized_str="")} \n') # print the result of the function
 
-def func_new_sentence (input_str, new_sentence):
+def func_new_sentence (input_str, new_sentence): # function for adding a new sentence
     for sentence in func_normalize(input_str=str, normilized_str="").split('.'):
         if re.search(r'\w', sentence):
             new_sentence += sentence.split()[-1] + ' '
-    return func_normalize(input_str=str, normilized_str="")[:func_normalize(input_str=str, normilized_str="").find('paragraph.')+len('paragraph.')] + '\n' +\
-                            new_sentence.capitalize() + '\n' + \
+    str_with_new_sentence=func_normalize(input_str=str, normilized_str="")[:func_normalize(input_str=str, normilized_str="").find('paragraph.')+len('paragraph.')] + '\n' +\
+                            new_sentence.strip().capitalize() + '.\n' + \
                             func_normalize(input_str=str, normilized_str="")[func_normalize(input_str=str, normilized_str="").find('paragraph.')+len('paragraph.')+1:]
+    return str_with_new_sentence
 
-print (f'Normalized string with new sentence is:\n {func_new_sentence (input_str=str, new_sentence="")} \n')
+print (f'Normalized string with new sentence is:\n{func_new_sentence (input_str=str, new_sentence="")} \n') # print the result of the function
 
-def func_fix_string():
+def func_fix_string(): # function for fixing not correct 'iz'
     return re.sub(re.compile(' iz ', re.I), ' is ', func_new_sentence (input_str=str, new_sentence=""))
 
-print (f'Fixed normilized string with new sentence:\n {func_fix_string()} \n')
+print (f'Fixed normilized string with new sentence:\n{func_fix_string()} \n') # print the result of the function
 
-def func_whitespaces_num(input_str):
+def func_whitespaces_num(input_str): # function for count the whitespaces
     return len(re.findall(r'[\s]', input_str))
 
-print (f'The number of whitespaces in initial string is:\n {func_whitespaces_num(input_str=str)} \n')
+print (f'The number of whitespaces in initial string is:\n{func_whitespaces_num(input_str=str)} \n') # print the number of whitespaces
