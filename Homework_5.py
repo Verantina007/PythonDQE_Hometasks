@@ -1,67 +1,106 @@
 # #Homework_5
 import datetime as dt
+import time
 
-# define class for work with News
-class News:
-    def __init__(self, name_of_post='News', text='', city='', date=''):
-        self.name_of_post = name_of_post
-        self.text = input('Enter the text of the News:')
-        self.city = input('Enter the name of the city:')
-        self.date = dt.datetime.now()
 
-    def publish(self):
+class PostStory:
+    def __init__(self, post_name, post_text, post_param, calculated_parem='', string_for_post=''):
+        self.post_name = post_name
+        self.post_text = post_text
+        self.post_param = post_param
+        self.calculated_parem = calculated_parem
+        self.string_for_post = string_for_post
+
+    def make_string(self):
+        self.string_for_post=f'{self.post_name}\n{self.post_text}\n{self.post_param}, {self.calculated_parem}\n\n'
+
+    def add_post (self):
+        self.make_string()
         file = open('posts.txt', 'a')
-        file.write(self.name_of_post+'\n'+self.text+'\n'+self.city+', '+str(self.date)+'\n\n')
+        file.write(f'{self.string_for_post}\n\n')
         file.close()
+#        print(f'{self.string_for_post}')
 
 
-class PrivatAd:
-    def __init__(self, name_of_post='Privat Ad', text='', expiration_date='', number_of_days=''):
-        self.name_of_post = name_of_post
-        self.text = input('Enter the text of the Privat Ad:')
-        self.expiration_date = input('Enter the experation date of your Privat Ad in format DD/MM/YYYY:')
-        self.number_of_days = (dt.datetime.strptime(self.expiration_date, "%d/%m/%Y") - dt.datetime.today()).days
+class PostNews(PostStory):
+    def calculate_date(self):
+        self.calculated_parem = dt.datetime.now()
 
-    def publish(self):
-        file = open('posts.txt', 'a')
-        file.write(self.name_of_post+'\n'+self.text+'\nActual until: '+self.expiration_date+', '+str(self.number_of_days)+' days\n\n')
-        file.close()
+    def post_news(self):
+        self.calculate_date()
+        self.add_post()
+#        print(f'{self.string_for_post}')
 
-class WeatherForecast:
-    def __init__(self, name_of_post='Weather forecast', degrees=''):
-        self.name_of_post = name_of_post
-        self.degrees = input('Enter the weather forecast for a day in format +/-20.2 C')
-        self.result = self.weather_condition()
 
-    def weather_condition(self):
-        if self.degrees.startswith('+'):
-            self.result = 'hot weather'
-        elif self.degrees.startswith('-'):
-            self.result = 'cold weather'
-        elif self.degrees == '0 C':
-            self.result = 'not hot or cold'
-        return self.result
+class PostPrivatAd(PostStory):
+    def calculate_days(self):
+        try:
+            valid_date = time.strptime(self.post_param, '%d/%m/%Y')
+        except ValueError:
+            print('Invalid format of the date, it should be in format %d/%m/%Y')
+            exit()
+        self.calculated_parem = (dt.datetime.strptime(self.post_param, "%d/%m/%Y") - dt.datetime.today()).days
 
-    def publish(self):
-        file = open('posts.txt', 'a')
-        file.write(self.name_of_post+'\nThe weather forecast for today is: '+self.degrees+'\nWe are having '+self.result+'\n\n')
-        file.close()
+    def post_privatad(self):
+        self.calculate_days()
+        self.add_post()
+#        print(f'{self.string_for_post}')
+
+
+class PostWeatherForecast(PostStory):
+    def calculate_forecast(self):
+        if self.post_param.startswith('+'):
+            self.calculated_parem = 'hot weather'
+        elif self.post_param.startswith('-'):
+            self.calculated_parem = 'cold weather'
+        elif self.post_param == '0 C':
+            self.calculated_parem = 'not hot or cold'
+
+    def post_forecast(self):
+        try:
+            if (self.post_param.startswith('+')) | (self.post_param.startswith('-')) | (self.post_param == '0'):
+                pass
+            else:
+                raise Exception ('Invalid format of weather, it should be in format +/-2')
+        except Exception as error:
+            print(error)
+            exit()
+        self.calculate_forecast()
+        self.add_post()
+#        print(f'{self.string_for_post}')
 
 
 class ChoseYourPost:
     def __init__(self, number_of_the_post=''):
         self.number_of_the_post = input('Choose the type of your post (1 - News, 2 - Privat Ad, 3 - Weather forecast):')
 
+    def input_post(self, post_text='', post_param='',):
+        self.post_text = input('Enter the text of your post:')
+        self.post_param = input('Enter the text of additional information:')
+        try:
+            if (self.post_text == '') | (self.post_param == '') :
+                raise Exception ("You've entered empty string in text of the post or in parametr")
+            else:
+                pass
+        except Exception as error:
+            print(error)
+            exit()
+
     def publish_post(self, number_of_the_post=''):
         if self.number_of_the_post == '1':
-            News().publish()
+            self.post_name='News'
+            self.input_post()
+            PostNews(self.post_name, self.post_text, self.post_param).post_news()
         elif self.number_of_the_post == '2':
-            PrivatAd().publish()
+            self.post_name = 'PrivatAd'
+            self.input_post()
+            PostPrivatAd(self.post_name, self.post_text, self.post_param).post_privatad()
         elif self.number_of_the_post == '3':
-            WeatherForecast().publish()
+            self.post_name = 'Weather Forecast'
+            self.input_post()
+            PostWeatherForecast(self.post_name, self.post_text, self.post_param).post_forecast()
         else:
-            print ("You've entered the wrong number!")
+            print ("You've entered the wrong number! Choose the correct type of your post (1 - News, 2 - Privat Ad, 3 - Weather forecast)")
 
 
 ChoseYourPost().publish_post()
-
