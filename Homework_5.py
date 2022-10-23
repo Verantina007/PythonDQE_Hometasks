@@ -49,14 +49,6 @@ class PostPrivatAd(PostStory):
 
 class PostWeatherForecast(PostStory):
     def calculate_forecast(self):
-        if self.post_param.startswith('+'):
-            self.calculated_parem = 'hot weather'
-        elif self.post_param.startswith('-'):
-            self.calculated_parem = 'cold weather'
-        elif self.post_param == '0 C':
-            self.calculated_parem = 'not hot or cold'
-
-    def post_forecast(self):
         try:
             if (self.post_param.startswith('+')) | (self.post_param.startswith('-')) | (self.post_param == '0'):
                 pass
@@ -65,6 +57,14 @@ class PostWeatherForecast(PostStory):
         except Exception as error:
             print(error)
             exit()
+        if self.post_param.startswith('+'):
+            self.calculated_parem = 'hot weather'
+        elif self.post_param.startswith('-'):
+            self.calculated_parem = 'cold weather'
+        elif self.post_param == '0 C':
+            self.calculated_parem = 'not hot or cold'
+
+    def post_forecast(self):
         self.calculate_forecast()
         self.add_post()
 #        print(f'{self.string_for_post}')
