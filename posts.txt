@@ -1,16 +1,24 @@
-Weather forecast
-The weather forecast for today is: +20
-We are having hot weather
+Weather Forecast
+The weather forecast is
++25, hot weather
 
-Privat Ad
-Sell a cat
-Actual until: 20/10/2022, 1 days
+
+
+PrivatAd
+Sell a car
+30/10/2022, 6
+
+
 
 News
-News
-Minsk, 2022-10-18 10:15:50.378211
+Good news
+Minsk, 2022-10-23 18:03:12.689963
+
+
 
 News
-Some new news
-London, 2022-10-18 10:16:28.058577
+Some additional news
+Paris, 2022-10-23 18:03:32.781510
+
+
 
