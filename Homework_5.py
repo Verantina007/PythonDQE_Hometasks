@@ -69,6 +69,7 @@ class Publisher:  # class for choosing type of post
         else:
             print(
                 "You've entered the wrong number! Choose the correct type of your post (1 - News, 2 - Privat Ad, 3 - Weather forecast)")
+            exit()
         self.publish_post(self.number_of_the_post, self.calculated_param)
 
     def publish_post(self, number_of_the_post, calculated_param):  # publish for each type of posts
