@@ -54,14 +54,6 @@ class CountLetters:
         string_with_letters = self.parse_file(string_with_letters)
         number_of_all_letters = len(string_with_letters)
         for letter in string_with_letters:
-            if letter.lower() not in dict_with_letters.keys():
-                number_of_letter = 1
-                if letter.isupper():
-                    number_of_uppercase = 1
-                else:
-                    number_of_uppercase = 0
-                persent_letter = (number_of_letter / number_of_all_letters) * 100
-                dict_with_letters[letter.lower()] = [number_of_letter, number_of_uppercase, persent_letter]
             if letter.lower() in dict_with_letters.keys():
                 number_of_letter = dict_with_letters[letter.lower()][0] + 1
                 if letter.isupper():
@@ -69,6 +61,14 @@ class CountLetters:
                 else:
                     number_of_uppercase = dict_with_letters[letter.lower()][1]
                 persent_letter = (dict_with_letters[letter.lower()][0] / number_of_all_letters) * 100
+                dict_with_letters[letter.lower()] = [number_of_letter, number_of_uppercase, persent_letter]
+            if letter.lower() not in dict_with_letters.keys():
+                number_of_letter = 1
+                if letter.isupper():
+                    number_of_uppercase = 1
+                else:
+                    number_of_uppercase = 0
+                persent_letter = (number_of_letter / number_of_all_letters) * 100
                 dict_with_letters[letter.lower()] = [number_of_letter, number_of_uppercase, persent_letter]
 
     def write_letters_csv(self, string_with_letters='', dict_with_letters={}):
@@ -93,4 +93,3 @@ class CountLetters:
 # define_format() # to add new posts in posts.txt file
 CountWords().write_words_csv()
 CountLetters().write_letters_csv()
-
