@@ -8,7 +8,7 @@ from Homework_6 import *  # import previous homeworks (5-6)
 
 class CountWords:
     @staticmethod
-    def parse_file(self, path_file='C:\\Users\\Vera_Varsotskaya\\PycharmProjects\\pythonProject4\\venv\\posts.txt'):
+    def parse_file(path_file='C:\\Users\\Vera_Varsotskaya\\PycharmProjects\\pythonProject4\\venv\\posts.txt'):
         with open(path_file, 'r') as source_file:  # open file with posts
             reader = csv.reader(source_file)  # read each line of the file
             list_with_words =  []
@@ -33,7 +33,7 @@ class CountWords:
     def write_words_csv(self, path_words='C:\\Users\\Vera_Varsotskaya\\PycharmProjects\\pythonProject4\\venv\\words.csv'):
         if os.path.exists(path_words):
             os.remove(path_words)  # delete old file if exists
-        list_with_words = self.parse_file(self)
+        list_with_words = self.parse_file()
         dict_for_words=self.count_number(list_with_words)
         with open('words.csv', 'w', newline='') as words_file:  # open file with posts
             writer = csv.writer(words_file, delimiter='-', quotechar='"',
@@ -44,7 +44,7 @@ class CountWords:
 
 class CountLetters:
     @staticmethod
-    def parse_file(self, path_file='C:\\Users\\Vera_Varsotskaya\\PycharmProjects\\pythonProject4\\venv\\posts.txt'):
+    def parse_file(path_file='C:\\Users\\Vera_Varsotskaya\\PycharmProjects\\pythonProject4\\venv\\posts.txt'):
         with open(path_file, 'r') as source_file:  # open file with posts
             reader = csv.reader(source_file)  # read each line of the file
             string_with_letters=''
@@ -80,7 +80,7 @@ class CountLetters:
     def write_letters_csv(self, path_letters='C:\\Users\\Vera_Varsotskaya\\PycharmProjects\\pythonProject4\\venv\\letters.csv'):
         if os.path.exists(path_letters):
             os.remove(path_letters)  # delete old file if exists
-        string_with_letters = self.parse_file(self)
+        string_with_letters = self.parse_file()
         dict_with_letters = self.count_values(string_with_letters)
         with open('letters.csv', 'w', newline='') as letters_file:  # open file with posts
             headers = ['letter in lower case', 'number of letters in any case', 'number of letter in uppercase',
