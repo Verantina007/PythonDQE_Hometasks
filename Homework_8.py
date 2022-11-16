@@ -2,7 +2,7 @@ import json  # import module for work with json
 from Homework_7 import *  # import previous homeworks (5-6)
 
 
-class Parse:
+class ParseJSON:
     def input_post(self, post_text='', post_param=''):  # function for input data
         dict_with_posts = json.load(open('posts_to_add.json'))
         new_lines = []
@@ -64,7 +64,7 @@ def define_format(input_post_format=''):
             print('No such file or directory: "posts_to_add.json"')
             exit()
         else:
-            Parse().input_post()
+            ParseJSON().input_post()
     else:
         print(
             "You've entered the wrong number! Choose the correct post format (1 - Text, 2 - File with one post, 3 - JSON file)")
