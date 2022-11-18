@@ -1,0 +1,66 @@
+
+PrivatAd
+Sell a car
+20/11/2022, 1
+
+
+
+Weather Forecast
+we will have
+-15, cold weather
+
+
+
+News
+Some good new
+Vitebs, 2022-11-18 03:12:24.482099
+
+
+
+News
+Some good new
+Vitebs, 2022-11-18 03:12:24.561557
+
+
+
+PrivatAd
+Some good new
+12/11/2022, -7
+
+
+
+Weather Forecast
+Some good news
+-20, cold weather
+
+
+
+Weather Forecast
+The weather forecast is
++25, hot weather
+
+
+
+PrivatAd
+Sell a Car
+10/11/2022, -9
+
+
+
+News
+Good news
+Minsk, 2022-11-18 03:12:55.149280
+
+
+
+PrivatAd
+Sell a Bike
+15/11/2022, -4
+
+
+
+PrivatAd
+Sell a car
+20/11/2022, 1
+
+
