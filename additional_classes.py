@@ -137,5 +137,3 @@ class CountLetters:
                     {'letter in lower case': key, 'number of letters in any case': dict_with_letters[key][0],
                      'number of letter in uppercase': dict_with_letters[key][1],
                      '% of letter in all letters': f'{dict_with_letters[key][2]:.2f}%'})
-
-
