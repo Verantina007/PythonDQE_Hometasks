@@ -1,0 +1,22 @@
+[
+{
+"Type of post" : "News",
+"Text of post" : "Some good news", 
+"Input parameter" : "Vitebsk"
+},
+{
+    "Type of post" : "News",
+    "Text of post" : "Some good news", 
+    "Input parameter" : "Vitebsk"
+},
+{
+    "Type of post" : "PrivatAd",
+    "Text of post" : "Some good news", 
+    "Input parameter" : "12/11/2022"
+},
+{
+    "Type of post" : "Weather Forecast",
+    "Text of post" : "Some good news", 
+    "Input parameter" : "-20"
+}
+]

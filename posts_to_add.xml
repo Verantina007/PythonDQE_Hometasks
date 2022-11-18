@@ -1,0 +1,18 @@
+<posts_to_add>
+    <post name="News">
+        <text_of_post>Some good news</text_of_post>
+        <input_parameter>Vitebsk</input_parameter>
+    </post>
+    <post name="News">
+        <text_of_post>Some good new news</text_of_post>
+        <input_parameter>Minsk</input_parameter>
+    </post>
+    <post name="PrivatAd">
+        <text_of_post>Sell a car</text_of_post>
+        <input_parameter>20/11/2022</input_parameter>
+    </post>
+    <post name="Weather Forecast">
+        <text_of_post>we will have</text_of_post>
+        <input_parameter>-15</input_parameter>
+    </post>
+</posts_to_add>
